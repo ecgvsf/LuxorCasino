@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <style>
+        /*video*/
+        .video-bg {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .video-bg video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /*blur*/
+        .bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(46, 44, 44, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /*scrollbar*/
+        ::-webkit-scrollbar {
+            width: 6px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgb(1 2 3 / 40%);
+            border-radius: 10px;
+        }
+        /*testo non selezionabile*/
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: neon;
+        }
+
+
+        body {
+            margin: 0;
+            width: 4000px;
+            background-color: rgba(0, 0, 0, 0.301);
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .swiper-pagination {
+            left: 25px;
+            width: 50px;
+            position: fixed;
+        }
+
+        @font-face {
+            font-family: neon;
+            src: url(./font/Clip.ttf);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .gallery__text {
+            padding-left: 5%;
+            font-size: 9vw;
+            line-height: 9vw;
+            z-index: 10;
+        }
+
+        .gallery__text-1, .gallery__text-1 a {
+            text-decoration: none;
+            color: #FB4264;
+            text-shadow: 0 0 3vw #F40A35;
+            animation: neon1 1s ease infinite;
+            -moz-animation: neon1 1s ease infinite;
+            -webkit-animation: neon1 1s ease infinite;
+        }
+
+        .gallery__text-2, .gallery__text-2 a {
+            text-decoration: none;
+            color: #161afa;
+            text-shadow: 0 0 3vw #161afa;
+            animation: neon2 1s ease infinite;
+            -moz-animation: neon2 1s ease infinite;
+            -webkit-animation: neon2 1s ease infinite;
+        }
+
+        .gallery__text-3, .gallery__text-3 a {
+            text-decoration: none;
+            color: #3cfa16;
+            text-shadow: 0 0 3vw #3cfa16;
+            animation: neon3 1s ease infinite;
+            -moz-animation: neon3 1s ease infinite;
+            -webkit-animation: neon3 1s ease infinite;
+        }
+
+        .gallery__text-4, .gallery__text-4 a {
+            text-decoration: none;
+            color: #fa16dc;
+            text-shadow: 0 0 3vw #fa16dc;
+            animation: neon4 1s ease infinite;
+            -moz-animation: neon4 1s ease infinite;
+            -webkit-animation: neon4 1s ease infinite;
+        }
+
+        @keyframes neon1 {
+
+            0%,
+            100% {
+                text-shadow: 0 0 1vw #FA1C16, 0 0 3vw #FA1C16, 0 0 10vw #FA1C16, 0 0 10vw #FA1C16, 0 0 .4vw #FED128, .5vw .5vw .1vw #806914;
+                color: #FED128;
+            }
+
+            50% {
+                text-shadow: 0 0 .5vw #800E0B, 0 0 1.5vw #800E0B, 0 0 5vw #800E0B, 0 0 5vw #800E0B, 0 0 .2vw #800E0B, .5vw .5vw .1vw #40340A;
+                color: #806914;
+            }
+        }
+
+        @keyframes neon2 {
+
+            0%,
+            100% {
+                text-shadow: 0 0 1vw #161afa, 0 0 3vw #161afa, 0 0 10vw #161afa, 0 0 10vw #161afa, 0 0 .4vw #289efe, .5vw .5vw .1vw #141f80;
+                color: #289efe;
+            }
+
+            50% {
+                text-shadow: 0 0 .5vw #1d0b80, 0 0 1.5vw #1d0b80, 0 0 5vw #1d0b80, 0 0 5vw #1d0b80, 0 0 .2vw #1d0b80, .5vw .5vw .1vw #0a0e40;
+                color: #1b1480;
+            }
+        }
+
+        @keyframes neon3 {
+
+            0%,
+            100% {
+                text-shadow: 0 0 1vw #3cfa16, 0 0 3vw #3cfa16, 0 0 10vw #3cfa16, 0 0 10vw #3cfa16, 0 0 .4vw #53fe28, .5vw .5vw .1vw #148019;
+                color: #53fe28;
+            }
+
+            50% {
+                text-shadow: 0 0 .5vw #0b801b, 0 0 1.5vw #0b801b, 0 0 5vw #0b801b, 0 0 5vw #0b801b, 0 0 .2vw #0b801b, .5vw .5vw .1vw #0e400a;
+                color: #1d8014;
+            }
+        }
+
+        @keyframes neon4 {
+
+            0%,
+            100% {
+                text-shadow: 0 0 1vw #fa16dc, 0 0 3vw #fa16dc, 0 0 10vw #fa16dc, 0 0 10vw #fa16dc, 0 0 .4vw #fe2893, .5vw .5vw .1vw #801472;
+                color: #fe2893;
+            }
+
+            50% {
+                text-shadow: 0 0 .5vw #800b7a, 0 0 1.5vw #800b7a, 0 0 5vw #800b7a, 0 0 5vw #800b7a, 0 0 .2vw #800b7a, .5vw .5vw .1vw #400a25;
+                color: #801441;
+            }
+        }
+
+        .gallery {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .gallery__group {
+            margin-left: 200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card {
+            margin: 30px;
+            width: 500px;
+            height: 500px;
+            border-radius: 40px;
+            box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .card .card_image {
+            width: inherit;
+            height: inherit;
+            border-radius: 40px;
+        }
+
+        .card .card_image img {
+            width: inherit;
+            height: inherit;
+            border-radius: 40px;
+            object-fit: cover;
+        }
+
+        .card .card_title {
+            text-align: center;
+            border-radius: 0px 0px 40px 40px;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 30px;
+            margin-top: -80px;
+            height: 40px;
+        }
+
+        .card:hover {
+            transform: scale(0.9, 0.9);
+            box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25), -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+        }
+
+
+        @media all and (max-width: 500px) {
+
+            /* On small screens, we are no longer using row direction but column */
+            .card-list {
+                flex-direction: column;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                width: 500px;
+            }
+
+            .gallery {
+                width: 600px;
+                display: grid;
+                justify-items: center;
+            }
+
+            .gallery__group {
+                width: 70%;
+                justify-items: center;
+                margin-left: 5%;
+                display: grid;
+                gap: 25px;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery__text {
+                justify-items: center;
+                padding: 0px;
+                width: 600px;
+                height: 10px;
+                margin-top: 30px;
+            }
+
+            .card {
+                width: 120px;
+                height: 120px;
+                margin: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--video-->
+    <div class="video-bg">
+        <video width="320" height="240" autoplay loop muted>
+            <source src="./media/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="bg"></div>
+
+    
+    <!-- Swiper -->
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="gallery">
+                    <span class="gallery__text gallery__text-1"><a href="./BlackJack/BlackJack.html">BLACKJACK</a></span>
+                    <div class="gallery__group">
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/blackjack.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/blackjack.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/blackjack.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/blackjack.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/blackjack.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="gallery">
+                    <span class="gallery__text gallery__text-2"><a href="./SlotMachine/SlotMachine.html">SLOT MACHINE</a></span>
+                    <div class="gallery__group">
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/slot machine.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/slot machine.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/slot machine.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/slot machine.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/slot machine.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="gallery">
+                    <span class="gallery__text gallery__text-3"><a href="./Roulette/Roulette.html">ROULETTE</a></span>
+                    <div class="gallery__group">
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/roulette.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/roulette.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/roulette.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/roulette.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/roulette.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="gallery">
+                    <span class="gallery__text gallery__text-4"><a href="./MoneyWheel/MoneyWheel.html">MONEY WHEEL</a></span>
+                    <div class="gallery__group">
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/moneywheel.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/moneywheel.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/moneywheel.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/moneywheel.jpg">
+                            </div>
+                        </div>
+                        <div data-tilt class="card">
+                            <div class="card_image">
+                                <img src="./media/moneywheel.jpg">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        window.addEventListener("mousewheel", e => {
+            if (e.deltaX === 0) {
+                e.stopPropagation();
+                e.preventDefault();
+                window.scrollBy(e.deltaY, 0);
+            }
+        });
+
+        var swiper = new Swiper(".mySwiper", {
+            direction: "vertical",
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".n",
+                prevEl: ".p",
+            },
+        });
+    </script>
+</body>
+
+</html>

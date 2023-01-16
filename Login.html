@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Luxur Casino - Log In</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style media="screen">
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #000000;
+      }
+
+      .background {
+        width: 430px;
+        height: 520px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+      }
+
+      .background .shape {
+        position: absolute;
+        top: calc(50% - 150px);
+        left: calc(50% - 150px);
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+      }
+
+      .shape:first-child {
+        box-shadow:
+          inset 0 0 50px #fff,
+          inset 20px 0 80px #f0f,
+          inset -20px 0 80px #0ff,
+          inset 20px 0 300px #f0f,
+          inset -20px 0 300px #0ff,
+          0 0 50px #fff,
+          -10px 0 80px #f0f,
+          10px 0 80px #0ff;
+        left: -80px;
+        top: -80px;
+      }
+
+      .shape:last-child {
+        box-shadow:
+          inset 0 0 50px #fff,
+          inset 20px 0 80px rgb(255, 166, 0),
+          inset -20px 0 80px rgb(255, 0, 0),
+          inset 20px 0 300px rgb(255, 238, 0),
+          inset -20px 0 300px rgb(255, 0, 0),
+          0 0 50px #fff,
+          -10px 0 80px rgb(255, 208, 0),
+          10px 0 80px rgb(255, 0, 0);
+        left: +250px;
+        top: +380px;
+      }
+
+      form {
+        height: 520px;
+        width: 400px;
+        background-color: rgba(255, 255, 255, 0.13);
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        padding: 50px 35px;
+      }
+
+
+
+      form * {
+        font-family: 'Poppins', sans-serif;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        outline: none;
+        border: none;
+      }
+
+      form h3 {
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 42px;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-top: 20px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      input {
+        display: block;
+        height: 50px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.07);
+        border-radius: 3px;
+        padding: 0 10px;
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 350;
+      }
+
+      ::placeholder {
+        color: #e5e5e5;
+      }
+
+      button {
+        margin-top: 35px;
+        width: 100%;
+        background-color: #ffffff;
+        color: #080710;
+        padding: 15px 0;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 5px;
+        cursor: pointer;
+        animation: textColor 5s infinite;
+      }
+
+      .social {
+        margin-top: 10px;
+        display: flex;
+      }
+
+      .social div {
+        background: red;
+        width: 150px;
+        border-radius: 3px;
+        padding: 5px 10px 10px 5px;
+        background-color: rgba(255, 255, 255, 0.27);
+        color: #eaf0fb;
+        text-align: center;
+        cursor: pointer;
+      }
+
+      .social div:hover {
+        background-color: rgba(255, 255, 255, 0.47);
+      }
+
+      .social .fb {
+        margin-left: 25px;
+      }
+
+      .social i {
+        margin-right: 4px;
+      }
+
+      .footer {
+        display: flex;
+        font-size: 0.7em;
+        color: hsl(0deg 0% 37%);
+        gap: 11.7em;
+        padding-top: 1em;
+        margin: 1%;
+      }
+
+      .footer span {
+        cursor: pointer
+      }
+
+      @keyframes textColor {
+        0% {
+          color: #ffef0f;
+        }
+
+        20% {
+          color: #ffb30f;
+        }
+
+        50% {
+          color: #ff830f;
+        }
+
+        80% {
+          color: #ffb30f;
+        }
+
+        100% {
+          color: #ffef0f;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <form action="./HomePage.html">
+      <h3>Login Here</h3>
+
+      <label for="username">Email</label>
+      <input type="email" placeholder="Email or Phone" id="username">
+
+      <label for="password">Password</label>
+      <input type="password" placeholder="Password" id="password">
+
+      <button id="login">Log In</button>
+      <div class="social">
+        <div class="go" onclick=google()><i class="fab fa-google"></i> Google</div>
+        <div class="fb" onclick=facebook()><i class="fab fa-facebook"></i> Facebook</div>
+      </div>
+      <div class="footer">
+        <span><a href="./SignUp.html"><u>Sign up here</u></a></span>
+        <span><a href="./recoveryPw.html"><u>Forgot password?</u></a></span>
+      </div>
+    </form>
+  </body>
+  
+  <!--
+  <script type="module">
+    alert("fff")
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+    //Email and Password
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.15.0/firebase/auth";
+    //Facebook
+    import { getAuth, signInWithPopup, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase/auth";
+    //Google
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.15.0/firebase/auth";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAAJ5hh8OJscOMhZJanVAJRUh4vEYb-axA",
+      authDomain: "luxor-4c058.firebaseapp.com",
+      databaseURL: "https://luxor-4c058-default-rtdb.firebaseio.com",
+      projectId: "luxor-4c058",
+      storageBucket: "luxor-4c058.appspot.com",
+      messagingSenderId: "775720522011",
+      appId: "1:775720522011:web:d56b93442222fbc2ff03be",
+      measurementId: "G-HD27SJJD2V"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+
+    function facebook() {
+
+      const provider = new FacebookAuthProvider(app);
+      const auth = getAuth(app);
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // The signed-in user info.
+          const user = result.user;
+
+          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+          const credential = FacebookAuthProvider.credentialFromResult(result);
+          const accessToken = credential.accessToken;
+
+          // ...
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = FacebookAuthProvider.credentialFromError(error);
+
+          // ...
+        });
+    }
+
+    function google() {
+      const provider = new GoogleAuthProvider(app);
+      const auth = getAuth(app);
+
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          // ...
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+        });
+    }
+
+    login.addEventListener('click', e => {
+
+      const auth = getAuth(app);
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+
+
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    })
+  </script>
+  -->
+
+</html>
