@@ -554,7 +554,7 @@ function draw() {
   document.getElementById('dealerScore').style.color = "orange";
   document.getElementById('playerScore').style.color = "orange";
   wallet = parseFloat(document.getElementById('wallet').innerHTML);
-  document.getElementById('wallet').innerHTML = String(wallet + (bet));
+  document.getElementById('wallet').innerHTML = String((wallet + (bet)).toFixed(2));
 }
 
 function win() {
