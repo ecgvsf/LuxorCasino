@@ -82,7 +82,7 @@ async function init(firstInit = true, groups = 1, duration = 1) {
     result.push(shuffleArr[shuffleArr.length - 1]);
   }
 
-  await sleep(3700);
+  await sleep(1700);
 
   if (!firstInit) {
     console.log(result)
@@ -93,10 +93,11 @@ async function init(firstInit = true, groups = 1, duration = 1) {
       var bet = parseFloat(document.getElementById('betAmount').value);
       var wallet = parseFloat(document.getElementById('wallet').innerHTML);
 
-      document.getElementById('wallet').innerHTML = (wallet + bet * filtered.length).toFixed(2);
-      document.getElementById('spin_button').style.color = "rgba(23, 37, 18, 0.596)";
+      
       spinning = false;
     }
+    document.getElementById('wallet').innerHTML = (wallet + bet * filtered.length).toFixed(2);
+    document.getElementById('spin_button').style.color = "rgba(23, 37, 18, 0.596)";
   }
 
 }
@@ -118,7 +119,7 @@ async function spin() {
     var wallet = parseFloat(document.getElementById('wallet').innerHTML);
     document.getElementById('wallet').innerHTML = (wallet - bet).toFixed(2);
 
-    //disable spin button
+      //disable spin button 
     document.getElementById('spin_button').style.color = "rgba(23, 37, 18, 0.211)";
     document.getElementById('spin_button').className = "";
 
