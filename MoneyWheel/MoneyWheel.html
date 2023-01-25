@@ -201,13 +201,21 @@
             document.getElementById('text').style.color = indicatedSegment.fillStyle
             document.getElementById('text').innerHTML = indicatedSegment.text
 
-            if (indicatedSegment.text !== "x0.00") {
-                var bet = parseFloat(document.getElementById('betAmount').value);
-                var wallet = parseFloat(document.getElementById('wallet').innerHTML);
+            var bet = parseFloat(document.getElementById('betAmount').value);
+            var wallet = parseFloat(document.getElementById('wallet').innerHTML);
 
-                wallet += bet * parseFloat((indicatedSegment.text.split("x")[1]));
-                document.getElementById('wallet').innerHTML = wallet.toFixed(2)
-                win.play()
+            console.log(typeof(wallet))
+
+            if (indicatedSegment.text !== "x0.00") {
+                var win = parseFloat(bet * parseFloat((indicatedSegment.text.split("x")[1])));
+                
+                //win.play();
+                console.log(win.toFixed(2))
+                notification("Win", (win).toFixed(2), bet.toFixed(2));
+                wallet += win;
+                document.getElementById('wallet').innerHTML = wallet.toFixed(2);
+            } else {
+                notification("Lose", 0, bet.toFixed(2));
             }
 
             document.getElementById('spin_button').style.color = "rgba(23, 37, 18, 0.596)";
@@ -234,7 +242,7 @@
 
             if (number == wallet) {
                 alert("no money");
-            } else if((number*2) > wallet){
+            } else if ((number * 2) > wallet) {
                 number = wallet
             } else {
                 number *= 2
@@ -250,6 +258,40 @@
                 number /= 2
                 document.getElementById('betAmount').value = number.toFixed(2)
             }
+        }
+
+        function notification(result, winValue, betTotal) {
+            let container = document.querySelector('#app');
+            let notification = document.createElement('div');
+            notification.setAttribute('id', 'notification');
+            let nSpan = document.createElement('div');
+            nSpan.setAttribute('class', 'nSpan');
+            let nsTxt = document.createElement('span');
+            nsTxt.innerText = result;
+            nSpan.append(nsTxt);
+            
+            let nsWin = document.createElement('div');
+            nsWin.setAttribute('class', 'nsWin');
+            let nsWinBlock = document.createElement('div');
+            nsWinBlock.setAttribute('class', 'nsWinBlock');
+            nsWinBlock.innerText = 'Bet: ' + betTotal;
+            nSpan.append(nsWinBlock);
+            nsWin.append(nsWinBlock);
+            nsWinBlock = document.createElement('div');
+            nsWinBlock.setAttribute('class', 'nsWinBlock');
+            nsWinBlock.innerText = 'Win: ' + winValue;
+            nSpan.append(nsWinBlock);
+            nsWin.append(nsWinBlock);
+            
+            nSpan.append(nsWin);
+            notification.append(nSpan);
+            container.prepend(notification);
+            setTimeout(function () {
+                notification.style.cssText = 'opacity:0';
+            }, 1000);
+            setTimeout(function () {
+                notification.remove();
+            }, 2000);
         }
     </script>
 </body>
